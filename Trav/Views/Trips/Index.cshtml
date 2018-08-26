@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Trav.Models.TripViewModel>
+
+@{
+    ViewBag.Title = "Trips taken";
+}
+
+<h2>Trips taken</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Country", "Index", new { sortOrder = "country" })
+        </th>
+        <th>
+            @Html.ActionLink("City/Area", "Index", new { sortOrder = "city" })
+        </th>
+        <th>
+            @Html.ActionLink("Year", "Index", new { sortOrder = "year" })
+        </th>
+        <th>
+            @Html.ActionLink("Trip Start Date", "Index", new { sortOrder = "startdate" })
+        </th>
+        <th>
+            @Html.ActionLink("Trip End Date", "Index", new { sortOrder = "enddate" })
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            @item.StartDate.ToShortDateString()
+        </td>
+        <td>
+            @item.EndDate.ToShortDateString()
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TripId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TripId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TripId })
+        </td>
+    </tr>
+}
+
+</table>
