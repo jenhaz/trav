@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
@@ -12,14 +11,19 @@ namespace Trav.Controllers
 {
     public class TripsController : Controller
     {
-        private TravContext db = new TravContext();
+        private readonly TravContext _db;
+
+        public TripsController(TravContext db)
+        {
+            _db = db;
+        }
 
         // GET: Trips
         public ActionResult Index(string sortOrder)
         {
-            List<Trip> tripsList = db.Trips.Include(t => t.Country).ToList();
-            IEnumerable<TripViewModel> tripsVm = tripsList.Select(x => GetTripVm(x));
-            IEnumerable<TripViewModel> trips = tripsVm;
+            var tripsList = _db.Trips.Include(t => t.Country).ToList();
+            var tripsVm = tripsList.Select(GetTripVm);
+            var trips = tripsVm;
 
             sortOrder = !string.IsNullOrEmpty(sortOrder) ? sortOrder : "year";
 
@@ -50,18 +54,15 @@ namespace Trav.Controllers
 
         public TripViewModel GetTripVm(Trip trip)
         {
-            DateTime startDate;
-            DateTime endDate;
-
             return new TripViewModel
             {
                 TripId = trip.TripId,
-                Year = DateTime.TryParseExact(trip.EndDate, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out endDate)
+                Year = DateTime.TryParseExact(trip.EndDate, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime endDate)
                     ? endDate.Year
                     : 1901,
                 City = trip.City,
                 Country = trip.Country.Name,
-                StartDate = DateTime.TryParseExact(trip.StartDate, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out startDate)
+                StartDate = DateTime.TryParseExact(trip.StartDate, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime startDate)
                     ? startDate
                     : new DateTime(),
                 EndDate = DateTime.TryParseExact(trip.EndDate, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out endDate)
@@ -77,7 +78,7 @@ namespace Trav.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Trip trip = db.Trips.Find(id);
+            var trip = _db.Trips.Find(id);
             if (trip == null)
             {
                 return HttpNotFound();
@@ -88,7 +89,7 @@ namespace Trav.Controllers
         // GET: Trips/Create
         public ActionResult Create()
         {
-            ViewBag.CountryId = new SelectList(db.Countries.OrderBy(x => x.Name), "Id", "Name");
+            ViewBag.CountryId = new SelectList(_db.Countries.OrderBy(x => x.Name), "Id", "Name");
             return View();
         }
 
@@ -101,27 +102,27 @@ namespace Trav.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Trips.Add(trip);
-                db.SaveChanges();
+                _db.Trips.Add(trip);
+                _db.SaveChanges();
 
                 CheckIfAlreadyVisited(trip.CountryId);
 
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CountryId = new SelectList(db.Countries.OrderBy(x => x.Name), "Id", "Name", trip.CountryId);
+            ViewBag.CountryId = new SelectList(_db.Countries.OrderBy(x => x.Name), "Id", "Name", trip.CountryId);
             return View(trip);
         }
 
         private void CheckIfAlreadyVisited(int countryId)
         {
-            Country country = db.Countries.Find(countryId);
+            var country = _db.Countries.Find(countryId);
 
-            if (!country.Visited)
+            if (country != null && !country.Visited)
             {
                 country.Visited = true;
-                db.Entry(country).State = EntityState.Modified;
-                db.SaveChanges();
+                _db.Entry(country).State = EntityState.Modified;
+                _db.SaveChanges();
             }
         }
 
@@ -132,12 +133,12 @@ namespace Trav.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Trip trip = db.Trips.Find(id);
+            var trip = _db.Trips.Find(id);
             if (trip == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CountryId = new SelectList(db.Countries.OrderBy(x => x.Name), "Id", "Name", trip.CountryId);
+            ViewBag.CountryId = new SelectList(_db.Countries.OrderBy(x => x.Name), "Id", "Name", trip.CountryId);
             return View(trip);
         }
 
@@ -150,11 +151,11 @@ namespace Trav.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(trip).State = EntityState.Modified;
-                db.SaveChanges();
+                _db.Entry(trip).State = EntityState.Modified;
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CountryId = new SelectList(db.Countries.OrderBy(x => x.Name), "Id", "Name", trip.CountryId);
+            ViewBag.CountryId = new SelectList(_db.Countries.OrderBy(x => x.Name), "Id", "Name", trip.CountryId);
             return View(trip);
         }
 
@@ -165,7 +166,7 @@ namespace Trav.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Trip trip = db.Trips.Find(id);
+            var trip = _db.Trips.Find(id);
             if (trip == null)
             {
                 return HttpNotFound();
@@ -178,9 +179,12 @@ namespace Trav.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Trip trip = db.Trips.Find(id);
-            db.Trips.Remove(trip);
-            db.SaveChanges();
+            var trip = _db.Trips.Find(id);
+            if (trip != null)
+            {
+                _db.Trips.Remove(trip);
+                _db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 
@@ -188,7 +192,7 @@ namespace Trav.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }

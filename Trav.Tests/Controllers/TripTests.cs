@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using System;
 using Trav.Controllers;
+using Trav.DAL;
 using Trav.Models;
 
 namespace Trav.Tests.Controllers
@@ -9,19 +10,26 @@ namespace Trav.Tests.Controllers
     [TestFixture]
     public class TripTests
     {
-        TripsController tripsController = new TripsController();
+        private TripsController _tripsController;
+        private Fixture _fixture;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _tripsController = new TripsController(new TravContext());
+            _fixture = new Fixture();
+        }
 
         [Test]
         public void WrongStartDate_ReturnsEmptyDateTime()
         {
-            Fixture fixture = new Fixture();
-            Trip trip = fixture.Build<Trip>()
+            var trip = _fixture.Build<Trip>()
                 .With(x => x.Country, new Country())
                 .With(x => x.StartDate, "2018/10/03")
                 .With(x => x.EndDate, "10/10/2018")
                 .Create();
 
-            TripViewModel result = tripsController.GetTripVm(trip);
+            var result = _tripsController.GetTripVm(trip);
 
             Assert.AreEqual(result.StartDate, new DateTime());
         }
@@ -29,14 +37,13 @@ namespace Trav.Tests.Controllers
         [Test]
         public void WrongEndDate_ReturnsEmptyDateTime()
         {
-            Fixture fixture = new Fixture();
-            Trip trip = fixture.Build<Trip>()
+            var trip = _fixture.Build<Trip>()
                 .With(x => x.Country, new Country())
                 .With(x => x.StartDate, "02/10/2018")
                 .With(x => x.EndDate, "484358583")
                 .Create();
 
-            TripViewModel result = tripsController.GetTripVm(trip);
+            var result = _tripsController.GetTripVm(trip);
 
             Assert.AreEqual(result.EndDate, new DateTime());
         }
@@ -44,14 +51,13 @@ namespace Trav.Tests.Controllers
         [Test]
         public void WrongEndDate_ReturnsWrongYear()
         {
-            Fixture fixture = new Fixture();
-            Trip trip = fixture.Build<Trip>()
+            var trip = _fixture.Build<Trip>()
                 .With(x => x.Country, new Country())
                 .With(x => x.StartDate, "02/10/2018")
                 .With(x => x.EndDate, "484358583")
                 .Create();
 
-            TripViewModel result = tripsController.GetTripVm(trip);
+            var result = _tripsController.GetTripVm(trip);
 
             Assert.AreEqual(result.Year, 1901);
         }

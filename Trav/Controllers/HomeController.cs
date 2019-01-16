@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using Trav.DAL;
 using Trav.Models;
@@ -8,23 +7,28 @@ namespace Trav.Controllers
 {
     public class HomeController : Controller
     {
-        private TravContext db = new TravContext();
+        private readonly TravContext _db;
+
+        public HomeController(TravContext db)
+        {
+            _db = db;
+        }
 
         public ActionResult Index()
         {
-            IEnumerable<Country> countries = db.Countries.ToList();
-            IEnumerable<Country> done = countries.Where(x => x.Visited);
+            var allCountries = _db.Countries.ToList();
+            var visitedCountries = allCountries.Where(x => x.Visited).ToList();
 
-            string[] codes = done.Select(c => c.Code).ToArray();
+            var codes = visitedCountries.Select(c => c.Code).ToArray();
 
-            string visited = "\'" + string.Join("\', \'", codes) + "\'";
+            var visited = "\'" + string.Join("\', \'", codes) + "\'";
 
-            HomeViewModel vm = new HomeViewModel
+            var vm = new HomeViewModel
             {
                 CountriesVisited = visited,
-                CountriesTotal = countries.Count(),
-                CountriesVisitedTotal = done.Count(),
-                CountriesToVisitTotal = (countries.Count() - done.Count())
+                CountriesTotal = allCountries.Count,
+                CountriesVisitedTotal = visitedCountries.Count,
+                CountriesToVisitTotal = allCountries.Count - visitedCountries.Count
             };
 
             return View(vm);

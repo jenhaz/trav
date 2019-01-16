@@ -9,12 +9,17 @@ namespace Trav.Controllers
 {
     public class CountriesController : Controller
     {
-        private TravContext db = new TravContext();
+        private readonly TravContext _db;
+
+        public CountriesController(TravContext db)
+        {
+            _db = db;
+        }
 
         // GET: Countries
         public ActionResult Index()
         {
-            return View(db.Countries.ToList().OrderBy(x => x.Name));
+            return View(_db.Countries.ToList().OrderBy(x => x.Name));
         }
 
         // GET: Countries/Details/5
@@ -24,7 +29,7 @@ namespace Trav.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Country country = db.Countries.Find(id);
+            var country = _db.Countries.Find(id);
             if (country == null)
             {
                 return HttpNotFound();
@@ -47,8 +52,8 @@ namespace Trav.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Countries.Add(country);
-                db.SaveChanges();
+                _db.Countries.Add(country);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -62,7 +67,7 @@ namespace Trav.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Country country = db.Countries.Find(id);
+            var country = _db.Countries.Find(id);
             if (country == null)
             {
                 return HttpNotFound();
@@ -79,8 +84,8 @@ namespace Trav.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(country).State = EntityState.Modified;
-                db.SaveChanges();
+                _db.Entry(country).State = EntityState.Modified;
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(country);
@@ -93,7 +98,7 @@ namespace Trav.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Country country = db.Countries.Find(id);
+            var country = _db.Countries.Find(id);
             if (country == null)
             {
                 return HttpNotFound();
@@ -106,9 +111,12 @@ namespace Trav.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Country country = db.Countries.Find(id);
-            db.Countries.Remove(country);
-            db.SaveChanges();
+            var country = _db.Countries.Find(id);
+            if (country != null)
+            {
+                _db.Countries.Remove(country);
+                _db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 
@@ -116,7 +124,7 @@ namespace Trav.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }
