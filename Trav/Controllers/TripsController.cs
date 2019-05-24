@@ -6,6 +6,9 @@ using System.Net;
 using System.Web.Mvc;
 using Trav.DAL;
 using Trav.Models;
+using Trav.Repositories;
+using Trav.Resolvers;
+using Trav.Services;
 
 namespace Trav.Controllers
 {
@@ -21,33 +24,9 @@ namespace Trav.Controllers
         // GET: Trips
         public ActionResult Index(string sortOrder)
         {
-            var tripsList = _db.Trips.Include(t => t.Country).ToList();
-            var tripsVm = tripsList.Select(GetTripVm);
-            var trips = tripsVm;
-
-            sortOrder = !string.IsNullOrEmpty(sortOrder) ? sortOrder : "year";
-
-            switch (sortOrder)
-            {
-                case "country":
-                    trips = tripsVm.OrderBy(y => y.Country);
-                    break;
-                case "city":
-                    trips = tripsVm.OrderBy(y => y.City);
-                    break;
-                case "year":
-                    trips = tripsVm.OrderBy(y => y.EndDate);
-                    break;
-                case "startdate":
-                    trips = tripsVm.OrderBy(y => y.StartDate);
-                    break;
-                case "enddate":
-                    trips = tripsVm.OrderBy(y => y.EndDate);
-                    break;
-                default:
-                    trips = tripsVm.OrderBy(y => y.EndDate);
-                    break;
-            }
+            var trips = new TripsService(
+                new TripsRepositoryResolver().Resolve())
+                .GetTrips(sortOrder);
 
             return View(trips);
         }

@@ -166,6 +166,16 @@
     <Compile Include="Models\Trip.cs" />
     <Compile Include="Models\TripViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CountriesRepository.cs" />
+    <Compile Include="Repositories\ICountriesRepository.cs" />
+    <Compile Include="Repositories\ITripsRepository.cs" />
+    <Compile Include="Repositories\TripsRepository.cs" />
+    <Compile Include="Resolvers\CountriesRepositoryResolver.cs" />
+    <Compile Include="Resolvers\TripsRepositoryResolver.cs" />
+    <Compile Include="Services\CountriesService.cs" />
+    <Compile Include="Services\ICountriesService.cs" />
+    <Compile Include="Services\ITripsService.cs" />
+    <Compile Include="Services\TripsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
