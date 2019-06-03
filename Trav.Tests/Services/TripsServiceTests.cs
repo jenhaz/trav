@@ -180,7 +180,7 @@ namespace Trav.Tests.Services
             Assert.That(result.First().City, Is.EqualTo("c-city"));
         }
 
-        private List<Trip> GetList()
+        private IEnumerable<Trip> GetList()
         {
             return new List<Trip>
             {

@@ -48,21 +48,31 @@ namespace Trav.Services
 
         private TripViewModel GetTripVm(Trip trip)
         {
+            var startDate = GetDate(trip.StartDate);
+            var endDate = GetDate(trip.EndDate);
+            var year = endDate != new DateTime() ? endDate.Year : 1901;
+
             return new TripViewModel
             {
                 TripId = trip.TripId,
-                Year = DateTime.TryParseExact(trip.EndDate, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime endDate)
-                    ? endDate.Year
-                    : 1901,
+                Year = year,
                 City = trip.City,
                 Country = trip.Country.Name,
-                StartDate = DateTime.TryParseExact(trip.StartDate, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime startDate)
-                    ? startDate
-                    : new DateTime(),
-                EndDate = DateTime.TryParseExact(trip.EndDate, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out endDate)
-                    ? endDate
-                    : new DateTime()
+                StartDate = startDate,
+                EndDate = endDate
             };
+        }
+
+        private DateTime GetDate(string date)
+        {
+            return DateTime.TryParseExact(
+                date, 
+                "dd/MM/yyyy", 
+                CultureInfo.InvariantCulture, 
+                DateTimeStyles.None,
+                out var startDate)
+                ? startDate
+                : new DateTime();
         }
     }
 }
