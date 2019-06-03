@@ -9,12 +9,7 @@ namespace Trav.Controllers
 {
     public class CountriesController : Controller
     {
-        private readonly TravContext _db;
-
-        public CountriesController(TravContext db)
-        {
-            _db = db;
-        }
+        private readonly TravContext _db = new TravContext();
 
         // GET: Countries
         public ActionResult Index()

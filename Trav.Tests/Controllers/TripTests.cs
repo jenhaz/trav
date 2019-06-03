@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using System;
 using Trav.Controllers;
-using Trav.DAL;
 using Trav.Models;
 
 namespace Trav.Tests.Controllers
@@ -16,7 +15,7 @@ namespace Trav.Tests.Controllers
         [SetUp]
         public void SetUp()
         {
-            _tripsController = new TripsController(new TravContext());
+            _tripsController = new TripsController();
             _fixture = new Fixture();
         }
 

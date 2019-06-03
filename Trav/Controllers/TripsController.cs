@@ -6,7 +6,6 @@ using System.Net;
 using System.Web.Mvc;
 using Trav.DAL;
 using Trav.Models;
-using Trav.Repositories;
 using Trav.Resolvers;
 using Trav.Services;
 
@@ -14,12 +13,7 @@ namespace Trav.Controllers
 {
     public class TripsController : Controller
     {
-        private readonly TravContext _db;
-
-        public TripsController(TravContext db)
-        {
-            _db = db;
-        }
+        private readonly TravContext _db = new TravContext();
 
         // GET: Trips
         public ActionResult Index(string sortOrder)
