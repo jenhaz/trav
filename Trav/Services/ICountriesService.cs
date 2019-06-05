@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Trav.Models;
+using Trav.Domain.Countries;
 
-namespace Trav.Services
+namespace Trav.Web.Services
 {
     public interface ICountriesService
     {

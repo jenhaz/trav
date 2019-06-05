@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Trav.Models;
+﻿using System.Collections.Generic;
+using Trav.Web.Models;
 
-namespace Trav.Services
+namespace Trav.Web.Services
 {
     public interface ITripsService
     {

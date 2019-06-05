@@ -1,11 +1,8 @@
-namespace Trav.Migrations
-{
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
+using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Trav.DAL.TravContext>
+namespace Trav.DataAccess.Migrations
+{
+    internal sealed class Configuration : DbMigrationsConfiguration<TravContext>
     {
         public Configuration()
         {
@@ -13,7 +10,7 @@ namespace Trav.Migrations
             ContextKey = "Trav.DAL.TravContext";
         }
 
-        protected override void Seed(Trav.DAL.TravContext context)
+        protected override void Seed(TravContext context)
         {
             //  This method will be called after migrating to the latest version.
 

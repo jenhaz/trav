@@ -1,4 +1,6 @@
-﻿namespace Trav.Models
+﻿using Trav.DataAccess.Countries;
+
+namespace Trav.DataAccess.Trips
 {
     public class Trip
     {

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Trav.Models;
-using Trav.Repositories;
+using Trav.Domain.Trips;
+using Trav.Web.Models;
 
-namespace Trav.Services
+namespace Trav.Web.Services
 {
     public class TripsService : ITripsService
     {
@@ -19,7 +19,7 @@ namespace Trav.Services
         public IEnumerable<TripViewModel> GetTrips(string sortOrder = null)
         {
             var tripsList = _repository.Get();
-            var trips = tripsList.Select(GetTripVm);
+            var trips = tripsList.Select(x => GetTripVm(x));
 
             switch (sortOrder)
             {
@@ -54,10 +54,10 @@ namespace Trav.Services
 
             return new TripViewModel
             {
-                TripId = trip.TripId,
+                TripId = trip.Id,
                 Year = year,
                 City = trip.City,
-                Country = trip.Country.Name,
+                Country = trip.Country,
                 StartDate = startDate,
                 EndDate = endDate
             };

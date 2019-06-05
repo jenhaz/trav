@@ -1,8 +1,9 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Trav.Models;
+using Trav.DataAccess.Countries;
+using Trav.DataAccess.Trips;
 
-namespace Trav.DAL
+namespace Trav.DataAccess
 {
     public class TravContext : DbContext
     {

@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Trav.Domain\Trav.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Migrations\201808221441094_InitialCreate.Designer.cs">
+      <DependentUpon>201808221441094_InitialCreate.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Migrations\201808221441094_InitialCreate.resx">
+      <DependentUpon>201808221441094_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

@@ -1,8 +1,7 @@
-namespace Trav.Migrations
+using System.Data.Entity.Migrations;
+
+namespace Trav.DataAccess.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class InitialCreate : DbMigration
     {
         public override void Up()

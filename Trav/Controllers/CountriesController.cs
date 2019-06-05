@@ -2,10 +2,11 @@
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using Trav.DAL;
-using Trav.Models;
+using Trav.DataAccess;
+using Trav.DataAccess.Countries;
+using Trav.Web.Models;
 
-namespace Trav.Controllers
+namespace Trav.Web.Controllers
 {
     public class CountriesController : Controller
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Trav.Models
+namespace Trav.Web.Models
 {
     public class TripViewModel
     {

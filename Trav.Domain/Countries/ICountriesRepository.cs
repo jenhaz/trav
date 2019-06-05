@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Trav.Models;
 
-namespace Trav.Repositories
+namespace Trav.Domain.Countries
 {
     public interface ICountriesRepository
     {

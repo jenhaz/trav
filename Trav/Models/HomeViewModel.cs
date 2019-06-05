@@ -1,4 +1,4 @@
-﻿namespace Trav.Models
+﻿namespace Trav.Web.Models
 {
     public class HomeViewModel
     {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
-using Trav.Models;
+using Trav.DataAccess.Countries;
 
-namespace Trav.DAL
+namespace Trav.DataAccess
 {
     public class TravInitialiser : DropCreateDatabaseIfModelChanges<TravContext>
     {

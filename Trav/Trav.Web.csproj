@@ -14,8 +14,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Trav</RootNamespace>
-    <AssemblyName>Trav</AssemblyName>
+    <RootNamespace>Trav.Web</RootNamespace>
+    <AssemblyName>Trav.Web</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -151,25 +151,12 @@
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TripsController.cs" />
-    <Compile Include="DAL\TravContext.cs" />
-    <Compile Include="DAL\TravInitialiser.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808221441094_InitialCreate.cs" />
-    <Compile Include="Migrations\201808221441094_InitialCreate.Designer.cs">
-      <DependentUpon>201808221441094_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Country.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
-    <Compile Include="Models\Trip.cs" />
     <Compile Include="Models\TripViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\CountriesRepository.cs" />
-    <Compile Include="Repositories\ICountriesRepository.cs" />
-    <Compile Include="Repositories\ITripsRepository.cs" />
-    <Compile Include="Repositories\TripsRepository.cs" />
     <Compile Include="Resolvers\CountriesRepositoryResolver.cs" />
     <Compile Include="Resolvers\TripsRepositoryResolver.cs" />
     <Compile Include="Services\CountriesService.cs" />
@@ -275,15 +262,20 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808221441094_InitialCreate.resx">
-      <DependentUpon>201808221441094_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Trav.DataAccess\Trav.DataAccess.csproj">
+      <Project>{c85181cf-75b3-4318-81fe-4b773ec0c5a7}</Project>
+      <Name>Trav.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trav.Domain\Trav.Domain.csproj">
+      <Project>{eb967a39-a9f8-4732-bd4a-b0350aa558a3}</Project>
+      <Name>Trav.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

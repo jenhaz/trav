@@ -1,7 +1,8 @@
-﻿using Trav.DAL;
-using Trav.Repositories;
+﻿using Trav.DataAccess;
+using Trav.DataAccess.Countries;
+using Trav.Domain.Countries;
 
-namespace Trav.Resolvers
+namespace Trav.Web.Resolvers
 {
     public class CountriesRepositoryResolver
     {

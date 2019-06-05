@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Trav.Models;
-using Trav.Repositories;
+using Trav.Domain.Countries;
 
-namespace Trav.Services
+namespace Trav.Web.Services
 {
     public class CountriesService : ICountriesService
     {

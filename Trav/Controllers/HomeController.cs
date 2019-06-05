@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using Trav.Models;
-using Trav.Resolvers;
-using Trav.Services;
+using Trav.Web.Models;
+using Trav.Web.Resolvers;
+using Trav.Web.Services;
 
-namespace Trav.Controllers
+namespace Trav.Web.Controllers
 {
     public class HomeController : Controller
     {

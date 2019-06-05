@@ -1,7 +1,8 @@
-﻿using Trav.DAL;
-using Trav.Repositories;
+﻿using Trav.DataAccess;
+using Trav.DataAccess.Trips;
+using Trav.Domain.Trips;
 
-namespace Trav.Resolvers
+namespace Trav.Web.Resolvers
 {
     public class TripsRepositoryResolver
     {

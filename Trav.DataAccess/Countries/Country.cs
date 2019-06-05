@@ -1,4 +1,4 @@
-﻿namespace Trav.Models
+﻿namespace Trav.DataAccess.Countries
 {
     public class Country
     {

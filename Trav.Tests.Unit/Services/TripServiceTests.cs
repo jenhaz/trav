@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using AutoFixture;
+﻿using AutoFixture;
 using NSubstitute;
 using NUnit.Framework;
-using Trav.Models;
-using Trav.Repositories;
-using Trav.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Trav.Domain.Trips;
+using Trav.Web.Services;
 
-namespace Trav.Tests.Services
+namespace Trav.Tests.Unit.Services
 {
-    public class TripsServiceTests
+    public class TripServiceTests
     {
         private ITripsRepository _tripsRepository;
         private TripsService _subject;
@@ -29,7 +28,6 @@ namespace Trav.Tests.Services
         {
             // given
             var trip = _fixture.Build<Trip>()
-                .With(x => x.Country, new Country())
                 .With(x => x.StartDate, "2018/10/03")
                 .With(x => x.EndDate, "10/10/2018")
                 .Create();
@@ -53,7 +51,6 @@ namespace Trav.Tests.Services
         {
             // given
             var trip = _fixture.Build<Trip>()
-                .With(x => x.Country, new Country())
                 .With(x => x.StartDate, "02/10/2018")
                 .With(x => x.EndDate, "484358583")
                 .Create();
@@ -77,7 +74,6 @@ namespace Trav.Tests.Services
         {
             // given
             var trip = _fixture.Build<Trip>()
-                .With(x => x.Country, new Country())
                 .With(x => x.StartDate, "02/10/2018")
                 .With(x => x.EndDate, "484358583")
                 .Create();
@@ -184,51 +180,9 @@ namespace Trav.Tests.Services
         {
             return new List<Trip>
             {
-                new Trip
-                {
-                    City = "b-city",
-                    Country = new Country
-                    {
-                        Code = "code",
-                        Id = 1,
-                        Name = "a-name",
-                        Visited = true
-                    },
-                    CountryId = 1,
-                    EndDate = "01/01/2018",
-                    StartDate = "01/01/2018",
-                    TripId = 1
-                },
-                new Trip
-                {
-                    City = "a-city",
-                    Country = new Country
-                    {
-                        Code = "code",
-                        Id = 1,
-                        Name = "b-name",
-                        Visited = true
-                    },
-                    CountryId = 1,
-                    EndDate = "01/01/2018",
-                    StartDate = "01/01/2018",
-                    TripId = 1
-                },
-                new Trip
-                {
-                    City = "c-city",
-                    Country = new Country
-                    {
-                        Code = "code",
-                        Id = 1,
-                        Name = "c-name",
-                        Visited = true
-                    },
-                    CountryId = 1,
-                    EndDate = "01/01/2017",
-                    StartDate = "01/01/2017",
-                    TripId = 1
-                }
+                new Trip(1, 1, "b-city", "01/01/2018", "01/01/2018", "a-name"),
+                new Trip(1, 1, "a-city", "01/01/2018", "01/01/2018", "b-name"),
+                new Trip(1, 1, "c-city", "01/01/2017", "01/01/2017", "c-name")
             };
         }
     }
