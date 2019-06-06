@@ -4,18 +4,26 @@ using System.Net;
 using System.Web.Mvc;
 using Trav.DataAccess;
 using Trav.DataAccess.Countries;
-using Trav.Web.Models;
+using Trav.Web.Services;
 
 namespace Trav.Web.Controllers
 {
     public class CountriesController : Controller
     {
         private readonly TravContext _db = new TravContext();
+        private readonly ICountriesService _countriesService;
+
+        public CountriesController(ICountriesService countriesService)
+        {
+            _countriesService = countriesService;
+        }
 
         // GET: Countries
         public ActionResult Index()
         {
-            return View(_db.Countries.ToList().OrderBy(x => x.Name));
+            var countries = _countriesService.GetAll();
+
+            return View(countries.OrderBy(x => x.Name));
         }
 
         // GET: Countries/Details/5
@@ -25,11 +33,14 @@ namespace Trav.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var country = _db.Countries.Find(id);
+
+            var country = _countriesService.For(id.Value);
+
             if (country == null)
             {
                 return HttpNotFound();
             }
+
             return View(country);
         }
 
@@ -44,7 +55,7 @@ namespace Trav.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Code,Visited")] Country country)
+        public ActionResult Create([Bind(Include = "Id,Name,Code,Visited")] CountryDao country)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +87,7 @@ namespace Trav.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Code,Visited")] Country country)
+        public ActionResult Edit([Bind(Include = "Id,Name,Code,Visited")] CountryDao country)
         {
             if (ModelState.IsValid)
             {
@@ -94,11 +105,14 @@ namespace Trav.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var country = _db.Countries.Find(id);
+
+            var country = _countriesService.For(id.Value);
+
             if (country == null)
             {
                 return HttpNotFound();
             }
+
             return View(country);
         }
 
@@ -107,12 +121,13 @@ namespace Trav.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var country = _db.Countries.Find(id);
+            var country = _countriesService.For(id);
+
             if (country != null)
             {
-                _db.Countries.Remove(country);
-                _db.SaveChanges();
+                _countriesService.Delete(country);
             }
+
             return RedirectToAction("Index");
         }
 

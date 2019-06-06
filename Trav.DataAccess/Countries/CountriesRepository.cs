@@ -13,16 +13,42 @@ namespace Trav.DataAccess.Countries
             _db = db;
         }
 
-        public IEnumerable<Domain.Countries.Country> Get()
+        public IEnumerable<Country> Get()
         {
             var countries = _db.Countries.ToList();
 
             return countries.Select(ToDomain);
         }
 
-        private Domain.Countries.Country ToDomain(Country dao)
+        public Country For(int id)
         {
-            return new Domain.Countries.Country
+            var country = _db.Countries.Find(id);
+
+            return ToDomain(country);
+        }
+
+        public void Delete(Country country)
+        {
+            var dao = ToDao(country);
+
+            _db.Countries.Remove(dao);
+            _db.SaveChanges();
+        }
+
+        private CountryDao ToDao(Country country)
+        {
+            return new CountryDao
+            {
+                Id = country.Id,
+                Name = country.Name,
+                Code = country.Code,
+                Visited = country.Visited
+            };
+        }
+
+        private Country ToDomain(CountryDao dao)
+        {
+            return new Country
             {
                 Id = dao.Id,
                 Name = dao.Name,

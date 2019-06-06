@@ -10,7 +10,6 @@ namespace Trav.DataAccess.Trips
         public string StartDate { get; set; }
         public string EndDate { get; set; }
 
-
-        public virtual Country Country { get; set; }
+        public virtual CountryDao Country { get; set; }
     }
 }

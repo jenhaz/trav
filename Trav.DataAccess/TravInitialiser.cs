@@ -8,1444 +8,1444 @@ namespace Trav.DataAccess
     {
         protected override void Seed(TravContext context)
         {
-            var countries = new List<Country>
+            var countries = new List<CountryDao>
             {
-                new Country
+                new CountryDao
                 {
                     Name = "Afghanistan",
                     Code = "AF",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Albania",
                     Code = "AL",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Algeria",
                     Code = "DZ",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "American Samoa",
                     Code = "AS",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Andorra",
                     Code = "AD",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Angola",
                     Code = "AO",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Anguilla",
                     Code = "AI",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Antarctica",
                     Code = "AQ",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Antigua & Barbuda",
                     Code = "AG",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Argentina",
                     Code = "AR",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Armenia",
                     Code = "AM",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Aruba",
                     Code = "AW",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Australia",
                     Code = "AU",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Austria",
                     Code = "AT",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Azerbaijan",
                     Code = "AZ",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Bahrain",
                     Code = "BH",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Bangladesh",
                     Code = "BD",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Barbados",
                     Code = "BB",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Belarus",
                     Code = "BY",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Belgium",
                     Code = "BE",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Belize",
                     Code = "BZ",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Benin",
                     Code = "BJ",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Bermuda",
                     Code = "BM",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Bhutan",
                     Code = "BT",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Bolivia",
                     Code = "BO",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Bosnia & Herzegovina",
                     Code = "BA",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Botswana",
                     Code = "BW",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Bouvet Island",
                     Code = "BV",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Brazil",
                     Code = "BR",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "British Indian Ocean Territory",
                     Code = "IO",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "British Virgin Islands",
                     Code = "VG",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Brunei",
                     Code = "BN",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Bulgaria",
                     Code = "BG",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Burkina Faso",
                     Code = "BF",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Burundi",
                     Code = "BI",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Cambodia",
                     Code = "KH",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Cameroon",
                     Code = "CM",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Canada",
                     Code = "CA",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Cape Verde",
                     Code = "CV",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Cayman Islands",
                     Code = "KY",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Central African Republic",
                     Code = "CF",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Chad",
                     Code = "TD",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Chile",
                     Code = "CL",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "China",
                     Code = "CN",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Christmas Island",
                     Code = "CX",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Cocos Island",
                     Code = "CC",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Colombia",
                     Code = "CO",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Comoros",
                     Code = "KM",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Congo",
                     Code = "CG",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Democratic Republic of the Congo",
                     Code = "CD",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Cook Islands",
                     Code = "CK",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Costa Rica",
                     Code = "CR",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Cote d'Ivoire",
                     Code = "CI",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Croatia",
                     Code = "HR",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Cuba",
                     Code = "CU",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Cyprus",
                     Code = "CY",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Czech Republic",
                     Code = "CZ",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Denmark",
                     Code = "DK",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Djibouti",
                     Code = "DJ",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Dominica",
                     Code = "DM",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Dominican Republic",
                     Code = "DO",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Ecuador",
                     Code = "EC",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Egypt",
                     Code = "EG",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "El Salvador",
                     Code = "SV",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Equitorial Guinea",
                     Code = "GQ",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Eritrea",
                     Code = "ER",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Estonia",
                     Code = "EE",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Ethiopia",
                     Code = "ET",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Falkland Islands",
                     Code = "FK",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Faroe Islands",
                     Code = "FO",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Fiji",
                     Code = "FJ",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Finland",
                     Code = "FI",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "France",
                     Code = "FR",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "French Guiana",
                     Code = "GF",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "French Polynesia",
                     Code = "PF",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "French Southern & Antarctic Lands",
                     Code = "TF",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Gabon",
                     Code = "GA",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Gaza Strip",
                     Code = "PS",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Georgia",
                     Code = "GE",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Germany",
                     Code = "DE",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Ghana",
                     Code = "GH",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Gibraltar",
                     Code = "GI",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Greece",
                     Code = "GR",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Greenland",
                     Code = "GL",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Grenada",
                     Code = "GD",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Guadeloupe",
                     Code = "GP",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Guam",
                     Code = "GU",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Guatemala",
                     Code = "GT",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Guinea",
                     Code = "GN",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Guinea-Bissau",
                     Code = "GW",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Guyana",
                     Code = "GY",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Haiti",
                     Code = "HT",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Heard Island & McDonald Islands",
                     Code = "HM",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Honduras",
                     Code = "HN",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Hungary",
                     Code = "HU",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Iceland",
                     Code = "IS",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "India",
                     Code = "IN",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Indonesia",
                     Code = "ID",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Iran",
                     Code = "IR",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Iraq",
                     Code = "IQ",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Ireland",
                     Code = "IE",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Israel",
                     Code = "IL",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Italy",
                     Code = "IT",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Jamaica",
                     Code = "JM",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Jan Mayen",
                     Code = "SJ",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Japan",
                     Code = "JP",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Jarvis Island",
                     Code = "UM",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Jordan",
                     Code = "JO",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Kazakhstan",
                     Code = "KZ",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Kenya",
                     Code = "KE",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Kiribati",
                     Code = "KI",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Kuwait",
                     Code = "KW",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Kyrgyzstan",
                     Code = "KG",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Laos",
                     Code = "LA",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Latvia",
                     Code = "LV",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Lebanon",
                     Code = "LB",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Lesotho",
                     Code = "LS",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Liberia",
                     Code = "LR",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Libya",
                     Code = "LY",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Liechtenstein",
                     Code = "LI",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Lithuania",
                     Code = "LT",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Luxembourg",
                     Code = "LU",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Macedonia",
                     Code = "MK",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Madagascar",
                     Code = "MG",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Malawi",
                     Code = "MW",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Malaysia",
                     Code = "MY",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Maldives",
                     Code = "MV",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Mali",
                     Code = "ML",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Malta",
                     Code = "MT",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Marshall Islands",
                     Code = "MH",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Martinique",
                     Code = "MQ",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Mauritania",
                     Code = "MR",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Mauritius",
                     Code = "MU",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Mayotte",
                     Code = "YT",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Mexico",
                     Code = "MX",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Micronesia",
                     Code = "FM",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Moldova",
                     Code = "MD",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Monaco",
                     Code = "MC",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Mongolia",
                     Code = "MN",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Montenegro",
                     Code = "ME",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Montserrat",
                     Code = "MS",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Morocco",
                     Code = "MA",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Mozambique",
                     Code = "MZ",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Myanmar",
                     Code = "MM",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Namibia",
                     Code = "NA",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Nauru",
                     Code = "NR",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Nepal",
                     Code = "NP",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Netherlands",
                     Code = "NL",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Netherlands Antilles",
                     Code = "AN",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "New Caledonia",
                     Code = "NC",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "New Zealand",
                     Code = "NZ",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Nicaragua",
                     Code = "NI",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Niger",
                     Code = "NE",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Nigeria",
                     Code = "NG",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Niue",
                     Code = "NU",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Norfolk Island",
                     Code = "NF",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "North Korea",
                     Code = "KP",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Northern Mariana Islands",
                     Code = "MP",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Norway",
                     Code = "NO",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Oman",
                     Code = "OM",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Pakistan",
                     Code = "PK",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Palau",
                     Code = "PW",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Panama",
                     Code = "PA",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Papua New Guinea",
                     Code = "PG",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Paraguay",
                     Code = "PY",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Peru",
                     Code = "PE",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Philippines",
                     Code = "PH",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Pitcairn Islands",
                     Code = "PN",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Poland",
                     Code = "PL",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Portugal",
                     Code = "PT",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Puerto Rico",
                     Code = "PR",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Qatar",
                     Code = "QA",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Reunion",
                     Code = "RE",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Romania",
                     Code = "RO",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Russia",
                     Code = "RU",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Rwanda",
                     Code = "RW",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Samoa",
                     Code = "WS",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "San Marino",
                     Code = "SM",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Sao Tome & Principe",
                     Code = "ST",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Saudi Arabia",
                     Code = "SA",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Senegal",
                     Code = "SN",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Serbia",
                     Code = "RS",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Seychelles",
                     Code = "SC",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Sierra Leone",
                     Code = "SL",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Singapore",
                     Code = "SG",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Slovakia",
                     Code = "SK",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Slovenia",
                     Code = "SI",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Solomon Islands",
                     Code = "SB",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Somalia",
                     Code = "SO",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "South Africa",
                     Code = "ZA",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "South Georgia & the South Sandwich Islands",
                     Code = "GS",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "South Korea",
                     Code = "KR",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Spain",
                     Code = "ES",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Sri Lanka",
                     Code = "LK",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "St Helena",
                     Code = "SH",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "St Kitts & Nevis",
                     Code = "KN",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "St Lucia",
                     Code = "LC",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "St Pierre & Miquelon",
                     Code = "PM",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "St Vincent & the Grenadines",
                     Code = "VC",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Sudan",
                     Code = "SD",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Suriname",
                     Code = "SR",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Swaziland",
                     Code = "SZ",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Sweden",
                     Code = "SE",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Switzerland",
                     Code = "CH",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Syria",
                     Code = "SY",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Tajikistan",
                     Code = "TJ",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Tanzania",
                     Code = "TZ",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Thailand",
                     Code = "TH",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Bahamas",
                     Code = "BS",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Gambia",
                     Code = "GM",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Timor-Leste",
                     Code = "TL",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Togo",
                     Code = "TG",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Tokelau",
                     Code = "TK",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Tonga",
                     Code = "TO",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Trinidad & Tobago",
                     Code = "TT",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Tunisia",
                     Code = "TN",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Turkey",
                     Code = "TR",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Turkmenistan",
                     Code = "TM",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Turks & Caicos Islands",
                     Code = "TC",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Tuvalu",
                     Code = "TV",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Uganda",
                     Code = "UG",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Ukraine",
                     Code = "UA",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "United Arab Emirates",
                     Code = "AE",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "United States of America",
                     Code = "US",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Uruguay",
                     Code = "UY",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Uzbekistan",
                     Code = "UZ",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Vanuatu",
                     Code = "VU",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Venezuela",
                     Code = "VE",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Vietnam",
                     Code = "VN",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Virgin Islands",
                     Code = "VI",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Wallis & Futuna",
                     Code = "WF",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Western Sahara",
                     Code = "EH",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Yemen",
                     Code = "YE",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Zambia",
                     Code = "ZM",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Zimbabwe",
                     Code = "ZW",
                     Visited = false
                 },
                 //to do: borders for map for 4 uk countries
-                //new Country
+                //new CountryDao
                 //{
                 //    Name = "United Kingdom",
                 //    Code = "GB",
                 //    Visited = false
                 //},
-                new Country
+                new CountryDao
                 {
                     Name = "England",
                     Code = "GB",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Wales",
                     Code = "GB",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Scotland",
                     Code = "GB",
                     Visited = false
                 },
-                new Country
+                new CountryDao
                 {
                     Name = "Northern Ireland",
                     Code = "GB",

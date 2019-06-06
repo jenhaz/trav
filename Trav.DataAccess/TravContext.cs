@@ -11,7 +11,7 @@ namespace Trav.DataAccess
         {
         }
 
-        public DbSet<Country> Countries { get; set; }
+        public DbSet<CountryDao> Countries { get; set; }
         public DbSet<Trip> Trips { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

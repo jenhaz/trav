@@ -20,7 +20,18 @@ namespace Trav.Web.Services
 
         public IEnumerable<Country> GetVisited()
         {
-            return _countriesRepository.Get().Where(x => x.Visited);
+            return _countriesRepository.Get()
+                .Where(x => x.Visited);
+        }
+
+        public Country For(int id)
+        {
+            return _countriesRepository.For(id);
+        }
+
+        public void Delete(Country country)
+        {
+            _countriesRepository.Delete(country);
         }
     }
 }

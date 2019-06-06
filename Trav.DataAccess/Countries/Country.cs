@@ -1,6 +1,9 @@
-﻿namespace Trav.DataAccess.Countries
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Trav.DataAccess.Countries
 {
-    public class Country
+    [Table("Country")]
+    public class CountryDao
     {
         public int Id { get; set; }
         public string Name { get; set; }

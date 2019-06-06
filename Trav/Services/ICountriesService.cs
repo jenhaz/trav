@@ -7,5 +7,7 @@ namespace Trav.Web.Services
     {
         IEnumerable<Country> GetAll();
         IEnumerable<Country> GetVisited();
+        Country For(int id);
+        void Delete(Country country);
     }
 }
