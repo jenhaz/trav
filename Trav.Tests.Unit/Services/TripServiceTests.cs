@@ -23,14 +23,20 @@ namespace Trav.Tests.Unit.Services
             _fixture = new Fixture();
         }
 
-        [Test]
-        public void WrongStartDate_ReturnsEmptyDateTime()
+        [TestCase("484358583")]
+        [TestCase("2018/p/4")]
+        [TestCase("potato")]
+        public void WrongStartDate_ReturnsEmptyDateTime(
+            string startDate)
         {
             // given
-            var trip = _fixture.Build<Trip>()
-                .With(x => x.StartDate, "2018/10/03")
-                .With(x => x.EndDate, "10/10/2018")
-                .Create();
+            var trip = new Trip(
+                _fixture.Create<int>(),
+                _fixture.Create<int>(),
+                _fixture.Create<string>(),
+                startDate,
+                "10/10/2018",
+                _fixture.Create<string>());
 
             _tripsRepository.Get()
                 .Returns(new List<Trip>
@@ -46,14 +52,20 @@ namespace Trav.Tests.Unit.Services
             Assert.AreEqual(result.StartDate, new DateTime());
         }
 
-        [Test]
-        public void WrongEndDate_ReturnsEmptyDateTime()
+        [TestCase("484358583")]
+        [TestCase("2018/p/4")]
+        [TestCase("potato")]
+        public void WrongEndDate_ReturnsEmptyDateTime_AndWrongYear(
+            string endDate)
         {
             // given
-            var trip = _fixture.Build<Trip>()
-                .With(x => x.StartDate, "02/10/2018")
-                .With(x => x.EndDate, "484358583")
-                .Create();
+            var trip = new Trip(
+                _fixture.Create<int>(),
+                _fixture.Create<int>(),
+                _fixture.Create<string>(),
+                "02/10/2018",
+                endDate,
+                _fixture.Create<string>());
 
             _tripsRepository.Get()
                 .Returns(new List<Trip>
@@ -67,122 +79,39 @@ namespace Trav.Tests.Unit.Services
             // then
             var result = results.FirstOrDefault();
             Assert.AreEqual(result.EndDate, new DateTime());
-        }
-
-        [Test]
-        public void WrongEndDate_ReturnsWrongYear()
-        {
-            // given
-            var trip = _fixture.Build<Trip>()
-                .With(x => x.StartDate, "02/10/2018")
-                .With(x => x.EndDate, "484358583")
-                .Create();
-
-            _tripsRepository.Get()
-                .Returns(new List<Trip>
-                {
-                    trip
-                });
-
-            // when
-            var results = _subject.GetTrips(_fixture.Create<string>());
-
-            // then
-            var result = results.FirstOrDefault();
             Assert.AreEqual(result.Year, 1901);
         }
 
-        [Test]
-        public void GetTrips_OrderedByCountry()
+        [TestCase("country", "country1", "city2")]
+        [TestCase("city", "country2", "city1")]
+        [TestCase("year", "country3", "city3")]
+        [TestCase("startdate", "country3", "city3")]
+        [TestCase("enddate", "country3", "city3")]
+        [TestCase("", "country3", "city3")]
+        public void GetTrips_OrderedByCountry(
+            string sortOrder,
+            string expectedCountryName,
+            string expectedCityName)
         {
             // given
             var trips = GetList();
             _tripsRepository.Get().Returns(trips);
 
             // when
-            var result = _subject.GetTrips("country");
+            var result = _subject.GetTrips(sortOrder);
 
             // then
-            Assert.That(result.First().Country, Is.EqualTo("a-name"));
-        }
-
-        [Test]
-        public void GetTrips_OrderedByCity()
-        {
-            // given
-            var trips = GetList();
-            _tripsRepository.Get().Returns(trips);
-
-            // when
-            var result = _subject.GetTrips("city");
-
-            // then
-            Assert.That(result.First().City, Is.EqualTo("a-city"));
-        }
-
-        [Test]
-        public void GetTrips_OrderedByYear()
-        {
-            // given
-            var trips = GetList();
-            _tripsRepository.Get().Returns(trips);
-
-            // when
-            var result = _subject.GetTrips("year");
-
-            // then
-            Assert.That(result.First().City, Is.EqualTo("c-city"));
-        }
-
-        [Test]
-        public void GetTrips_OrderedByStartDate()
-        {
-            // given
-            var trips = GetList();
-            _tripsRepository.Get().Returns(trips);
-
-            // when
-            var result = _subject.GetTrips("startdate");
-
-            // then
-            Assert.That(result.First().City, Is.EqualTo("c-city"));
-        }
-
-        [Test]
-        public void GetTrips_OrderedByEndDate()
-        {
-            // given
-            var trips = GetList();
-            _tripsRepository.Get().Returns(trips);
-
-            // when
-            var result = _subject.GetTrips("enddate");
-
-            // then
-            Assert.That(result.First().City, Is.EqualTo("c-city"));
-        }
-
-        [Test]
-        public void GetTrips_DefaultOrdering()
-        {
-            // given
-            var trips = GetList();
-            _tripsRepository.Get().Returns(trips);
-
-            // when
-            var result = _subject.GetTrips();
-
-            // then
-            Assert.That(result.First().City, Is.EqualTo("c-city"));
+            Assert.That(result.First().Country, Is.EqualTo(expectedCountryName));
+            Assert.That(result.First().City, Is.EqualTo(expectedCityName));
         }
 
         private IEnumerable<Trip> GetList()
         {
             return new List<Trip>
             {
-                new Trip(1, 1, "b-city", "01/01/2018", "01/01/2018", "a-name"),
-                new Trip(1, 1, "a-city", "01/01/2018", "01/01/2018", "b-name"),
-                new Trip(1, 1, "c-city", "01/01/2017", "01/01/2017", "c-name")
+                new Trip(1, 1, "city2", "01/01/2018", "01/01/2018", "country1"),
+                new Trip(1, 1, "city1", "01/01/2018", "01/01/2018", "country2"),
+                new Trip(1, 1, "city3", "01/01/2017", "01/01/2017", "country3")
             };
         }
     }
