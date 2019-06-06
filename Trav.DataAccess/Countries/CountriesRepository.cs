@@ -15,7 +15,9 @@ namespace Trav.DataAccess.Countries
 
         public IEnumerable<Domain.Countries.Country> Get()
         {
-            return _db.Countries.Select(x => ToDomain(x));
+            var countries = _db.Countries.ToList();
+
+            return countries.Select(ToDomain);
         }
 
         private Domain.Countries.Country ToDomain(Country dao)

@@ -15,7 +15,9 @@ namespace Trav.DataAccess.Trips
 
         public IEnumerable<Domain.Trips.Trip> Get()
         {
-            return _db.Trips.Select(x => ToDomain(x));
+            var trips = _db.Trips.ToList();
+
+            return trips.Select(ToDomain);
         }
 
         private Domain.Trips.Trip ToDomain(Trip dao)
