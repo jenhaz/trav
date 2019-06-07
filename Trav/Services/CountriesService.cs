@@ -33,5 +33,15 @@ namespace Trav.Web.Services
         {
             _countriesRepository.Delete(country);
         }
+
+        public void Insert(Country country)
+        {
+            _countriesRepository.Insert(country);
+        }
+
+        public void Edit(Country country)
+        {
+            _countriesRepository.Edit(country);
+        }
     }
 }

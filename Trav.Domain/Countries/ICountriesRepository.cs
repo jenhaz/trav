@@ -7,5 +7,7 @@ namespace Trav.Domain.Countries
         IEnumerable<Country> Get();
         Country For(int id);
         void Delete(Country country);
+        void Insert(Country country);
+        void Edit(Country country);
     }
 }

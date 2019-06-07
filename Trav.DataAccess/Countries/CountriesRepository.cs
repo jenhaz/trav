@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using Trav.Domain.Countries;
 
@@ -32,6 +33,22 @@ namespace Trav.DataAccess.Countries
             var dao = ToDao(country);
 
             _db.Countries.Remove(dao);
+            _db.SaveChanges();
+        }
+
+        public void Insert(Country country)
+        {
+            var dao = ToDao(country);
+
+            _db.Countries.Add(dao);
+            _db.SaveChanges();
+        }
+
+        public void Edit(Country country)
+        {
+            var dao = ToDao(country);
+
+            _db.Entry(dao).State = EntityState.Modified;
             _db.SaveChanges();
         }
 

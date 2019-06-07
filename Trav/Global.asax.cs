@@ -9,6 +9,7 @@ namespace Trav.Web
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+            SimpleInjectorConfig.RegisterComponents();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

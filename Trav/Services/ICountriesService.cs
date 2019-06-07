@@ -9,5 +9,7 @@ namespace Trav.Web.Services
         IEnumerable<Country> GetVisited();
         Country For(int id);
         void Delete(Country country);
+        void Insert(Country country);
+        void Edit(Country country);
     }
 }
