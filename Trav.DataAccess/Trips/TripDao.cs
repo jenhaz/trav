@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Trav.DataAccess.Countries;
 
 namespace Trav.DataAccess.Trips
@@ -6,6 +7,7 @@ namespace Trav.DataAccess.Trips
     [Table("Trip")]
     public class TripDao
     {
+        [Key]
         public int TripId { get; set; }
         public int CountryId { get; set; }
         public string City { get; set; }

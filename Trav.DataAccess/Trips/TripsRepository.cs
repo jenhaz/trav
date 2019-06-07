@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using Trav.Domain.Trips;
 
@@ -35,6 +36,22 @@ namespace Trav.DataAccess.Trips
             _db.SaveChanges();
         }
 
+        public void Edit(Trip trip)
+        {
+            var dao = ToDao(trip);
+
+            _db.Entry(dao).State = EntityState.Modified;
+            _db.SaveChanges();
+        }
+
+        public void Delete(Trip trip)
+        {
+            var dao = ToDao(trip);
+
+            _db.Trips.Remove(dao);
+            _db.SaveChanges();
+        }
+
         private TripDao ToDao(Trip trip)
         {
             return new TripDao
@@ -52,8 +69,8 @@ namespace Trav.DataAccess.Trips
             return new Trip(
                 dao.TripId,
                 dao.CountryId,
-                dao.City, 
-                dao.StartDate, 
+                dao.City,
+                dao.StartDate,
                 dao.EndDate,
                 dao.Country.Name);
         }

@@ -15,7 +15,6 @@ namespace Trav.Web.Controllers
             _countriesService = countriesService;
         }
 
-        // GET: Countries
         public ActionResult Index()
         {
             var countries = _countriesService.GetAll();
@@ -23,7 +22,6 @@ namespace Trav.Web.Controllers
             return View(countries.OrderBy(x => x.Name));
         }
 
-        // GET: Countries/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -41,15 +39,11 @@ namespace Trav.Web.Controllers
             return View(country);
         }
 
-        // GET: Countries/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Countries/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Code,Visited")] Country country)
@@ -63,7 +57,6 @@ namespace Trav.Web.Controllers
             return View(country);
         }
 
-        // GET: Countries/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -81,9 +74,6 @@ namespace Trav.Web.Controllers
             return View(country);
         }
 
-        // POST: Countries/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Code,Visited")] Country country)
@@ -96,7 +86,6 @@ namespace Trav.Web.Controllers
             return View(country);
         }
 
-        // GET: Countries/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -114,7 +103,6 @@ namespace Trav.Web.Controllers
             return View(country);
         }
 
-        // POST: Countries/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

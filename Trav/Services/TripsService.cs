@@ -59,6 +59,18 @@ namespace Trav.Web.Services
             _repository.Insert(trip);
         }
 
+        public void Edit(TripViewModel vm)
+        {
+            var trip = ToDomain(vm);
+            _repository.Edit(trip);
+        }
+
+        public void Delete(TripViewModel vm)
+        {
+            var trip = ToDomain(vm);
+            _repository.Delete(trip);
+        }
+
         private TripViewModel ToViewModel(Trip trip)
         {
             var startDate = GetDate(trip.StartDate);
