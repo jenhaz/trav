@@ -13,7 +13,7 @@ namespace Trav.Web.Controllers
             var countriesService = new CountriesService(
                 new CountriesRepositoryResolver().Resolve());
             var allCountries = countriesService.GetAll();
-            var visitedCountries = countriesService.GetVisited();
+            var visitedCountries = countriesService.GetAll(true);
 
             var countryCodes = visitedCountries.Select(c => c.Code).ToArray();
 

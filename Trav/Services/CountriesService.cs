@@ -13,15 +13,15 @@ namespace Trav.Web.Services
             _countriesRepository = countriesRepository;
         }
 
-        public IEnumerable<Country> GetAll()
+        public IEnumerable<Country> GetAll(bool visited = false)
         {
-            return _countriesRepository.Get();
-        }
+            if (visited)
+            {
+                return _countriesRepository.Get()
+                    .Where(x => x.Visited);
+            }
 
-        public IEnumerable<Country> GetVisited()
-        {
-            return _countriesRepository.Get()
-                .Where(x => x.Visited);
+            return _countriesRepository.Get();
         }
 
         public Country For(int id)

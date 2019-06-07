@@ -19,7 +19,7 @@ namespace Trav.Web.Services
         public IEnumerable<TripViewModel> GetTrips(string sortOrder = null)
         {
             var tripsList = _repository.Get();
-            var trips = tripsList.Select(x => GetTripVm(x));
+            var trips = tripsList.Select(ToViewModel);
 
             switch (sortOrder)
             {
@@ -46,11 +46,26 @@ namespace Trav.Web.Services
             return trips;
         }
 
-        private TripViewModel GetTripVm(Trip trip)
+        public TripViewModel For(int id)
+        {
+            var trip = _repository.For(id);
+
+            return ToViewModel(trip);
+        }
+
+        public void Insert(TripViewModel vm)
+        {
+            var trip = ToDomain(vm);
+            _repository.Insert(trip);
+        }
+
+        private TripViewModel ToViewModel(Trip trip)
         {
             var startDate = GetDate(trip.StartDate);
             var endDate = GetDate(trip.EndDate);
-            var year = endDate != new DateTime() ? endDate.Year : 1901;
+            var year = endDate != new DateTime()
+                ? endDate.Year
+                : 1901;
 
             return new TripViewModel
             {
@@ -59,14 +74,26 @@ namespace Trav.Web.Services
                 City = trip.City,
                 Country = trip.Country,
                 StartDate = startDate,
-                EndDate = endDate
+                EndDate = endDate,
+                CountryId = trip.CountryId
             };
         }
 
-        private DateTime GetDate(string date)
+        private Trip ToDomain(TripViewModel trip)
+        {
+            return new Trip(
+                trip.TripId, 
+                trip.CountryId, 
+                trip.City, 
+                trip.StartDate.ToString("dd/MM/yyyy"), 
+                trip.EndDate.ToString("dd/MM/yyyy"), 
+                trip.Country);
+        }
+
+    private DateTime GetDate(string date)
         {
             return DateTime.TryParseExact(
-                date, 
+                date,
                 "dd/MM/yyyy", 
                 CultureInfo.InvariantCulture, 
                 DateTimeStyles.None,

@@ -5,8 +5,7 @@ namespace Trav.Web.Services
 {
     public interface ICountriesService
     {
-        IEnumerable<Country> GetAll();
-        IEnumerable<Country> GetVisited();
+        IEnumerable<Country> GetAll(bool visited = false);
         Country For(int id);
         void Delete(Country country);
         void Insert(Country country);

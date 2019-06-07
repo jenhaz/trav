@@ -1,8 +1,10 @@
 ﻿using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Web.Mvc;
 using Trav.DataAccess;
 using Trav.Domain.Trips;
+using Trav.Web.Models;
 using Trav.Web.Resolvers;
 using Trav.Web.Services;
 
@@ -10,73 +12,75 @@ namespace Trav.Web.Controllers
 {
     public class TripsController : Controller
     {
-        private readonly TravContext _db = new TravContext();
+        private readonly ITripsService _tripsService;
+        private readonly ICountriesService _countriesService;
 
-        // GET: Trips
+        public TripsController(
+            ITripsService tripsService, 
+            ICountriesService countriesService)
+        {
+            _tripsService = tripsService;
+            _countriesService = countriesService;
+        }
+
         public ActionResult Index(string sortOrder)
         {
-            var trips = new TripsService(
-                new TripsRepositoryResolver().Resolve())
-                .GetTrips(sortOrder);
+            var trips = _tripsService.GetTrips(sortOrder);
 
             return View(trips);
         }
 
-        // GET: Trips/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //var trip = _db.Trips.Find(id);
-            //if (trip == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //return View(trip);
-            return View();
+
+            var trip = _tripsService.For(id.Value);
+
+            if (trip == null)
+            {
+                return HttpNotFound();
+            }
+            return View(trip);
         }
 
-        // GET: Trips/Create
         public ActionResult Create()
         {
-            ViewBag.CountryId = new SelectList(_db.Countries.OrderBy(x => x.Name), "Id", "Name");
+            var countries = _countriesService.GetAll().OrderBy(x => x.Name);
+            ViewBag.CountryId = new SelectList(countries, "Id", "Name");
             return View();
         }
 
-        // POST: Trips/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TripId,CountryId,City,StartDate,EndDate")] Trip trip)
+        public ActionResult Create([Bind(Include = "TripId,CountryId,City,StartDate,EndDate")] TripViewModel trip)
         {
             if (ModelState.IsValid)
             {
-                //_db.Trips.Add(trip);
-                //_db.SaveChanges();
+                _tripsService.Insert(trip);
 
                 CheckIfAlreadyVisited(trip.CountryId);
 
                 return RedirectToAction("Index");
             }
 
-            //ViewBag.CountryId = new SelectList(_db.Countries.OrderBy(x => x.Name), "Id", "Name", trip.CountryId);
+            var countries = _countriesService.GetAll().OrderBy(x => x.Name);
+            ViewBag.CountryId = new SelectList(countries, "Id", "Name", trip.CountryId);
             //return View(trip);
             return View();
         }
 
         private void CheckIfAlreadyVisited(int countryId)
         {
-            //var country = _db.Countries.Find(countryId);
+            var country = _countriesService.For(countryId);
 
-            //if (country != null && !country.Visited)
-            //{
-            //    country.Visited = true;
-            //    _db.Entry(country).State = EntityState.Modified;
-            //    _db.SaveChanges();
-            //}
+            if (country != null && !country.Visited)
+            {
+                country.Visited = true;
+                _countriesService.Edit(country);
+            }
         }
 
         // GET: Trips/Edit/5
@@ -86,14 +90,17 @@ namespace Trav.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //var trip = _db.Trips.Find(id);
-            //if (trip == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //ViewBag.CountryId = new SelectList(_db.Countries.OrderBy(x => x.Name), "Id", "Name", trip.CountryId);
-            //return View(trip);
-            return View();
+
+            var trip = _tripsService.For(id.Value);
+            if (trip == null)
+            {
+                return HttpNotFound();
+            }
+
+            var countries = _countriesService.GetAll().OrderBy(x => x.Name);
+            ViewBag.CountryId = new SelectList(countries, "Id", "Name", trip.Country);
+
+            return View(trip);
         }
 
         // POST: Trips/Edit/5
@@ -107,50 +114,43 @@ namespace Trav.Web.Controllers
             {
                 //_db.Entry(trip).State = EntityState.Modified;
                 //_db.SaveChanges();
-                //return RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
-            ViewBag.CountryId = new SelectList(_db.Countries.OrderBy(x => x.Name), "Id", "Name", trip.CountryId);
+
+            var countries = _countriesService.GetAll().OrderBy(x => x.Name);
+            ViewBag.CountryId = new SelectList(countries, "Id", "Name", trip.CountryId);
             //return View(trip);
             return View();
         }
 
-        // GET: Trips/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //var trip = _db.Trips.Find(id);
-            //if (trip == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //return View(trip);
-            return View();
+
+            var trip = _tripsService.For(id.Value);
+
+            if (trip == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(trip);
         }
 
-        // POST: Trips/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            //var trip = _db.Trips.Find(id);
-            //if (trip != null)
-            //{
+            var trip = _tripsService.For(id);
+            if (trip != null)
+            {
             //    _db.Trips.Remove(trip);
             //    _db.SaveChanges();
-            //}
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                //_db.Dispose();
             }
-            base.Dispose(disposing);
+            return RedirectToAction("Index");
         }
     }
 }

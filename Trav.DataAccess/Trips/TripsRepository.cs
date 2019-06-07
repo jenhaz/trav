@@ -13,16 +13,43 @@ namespace Trav.DataAccess.Trips
             _db = db;
         }
 
-        public IEnumerable<Domain.Trips.Trip> Get()
+        public IEnumerable<Trip> Get()
         {
             var trips = _db.Trips.ToList();
 
             return trips.Select(ToDomain);
         }
 
-        private Domain.Trips.Trip ToDomain(Trip dao)
+        public Trip For(int id)
         {
-            return new Domain.Trips.Trip(
+            var trip = _db.Trips.Find(id);
+
+            return ToDomain(trip);
+        }
+
+        public void Insert(Trip trip)
+        {
+            var dao = ToDao(trip);
+
+            _db.Trips.Add(dao);
+            _db.SaveChanges();
+        }
+
+        private TripDao ToDao(Trip trip)
+        {
+            return new TripDao
+            {
+                TripId = trip.Id,
+                City = trip.City,
+                CountryId = trip.CountryId,
+                StartDate = trip.StartDate,
+                EndDate = trip.EndDate
+            };
+        }
+
+        private Trip ToDomain(TripDao dao)
+        {
+            return new Trip(
                 dao.TripId,
                 dao.CountryId,
                 dao.City, 

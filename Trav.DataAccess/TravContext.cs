@@ -12,7 +12,7 @@ namespace Trav.DataAccess
         }
 
         public DbSet<CountryDao> Countries { get; set; }
-        public DbSet<Trip> Trips { get; set; }
+        public DbSet<TripDao> Trips { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -6,5 +6,7 @@ namespace Trav.Web.Services
     public interface ITripsService
     {
         IEnumerable<TripViewModel> GetTrips(string sortOrder);
+        TripViewModel For(int id);
+        void Insert(TripViewModel vm);
     }
 }

@@ -1,8 +1,10 @@
-﻿using Trav.DataAccess.Countries;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Trav.DataAccess.Countries;
 
 namespace Trav.DataAccess.Trips
 {
-    public class Trip
+    [Table("Trip")]
+    public class TripDao
     {
         public int TripId { get; set; }
         public int CountryId { get; set; }
